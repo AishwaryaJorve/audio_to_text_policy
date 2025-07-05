@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Live Transcribe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <h1>Contact Us</h1>
+            <p class="subtitle">Get in touch with Live Transcribe support</p>
+        </header>
+        
+        <main>
+            <div class="contact-form-container">
+                <div class="contact-intro">
+                    <h2>We'd love to hear from you</h2>
+                    <p>Have questions about Live Transcribe? Need support with transcriptions or our app? Send us a message and we'll get back to you as soon as possible.</p>
+                </div>
+                
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name *</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            class="form-input" 
+                            placeholder="Enter your full name"
+                            required
+                        >
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email *</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="Enter your email address"
+                            required
+                        >
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message *</label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            class="form-textarea" 
+                            placeholder="Tell us how we can help you with Live Transcribe..."
+                            rows="6"
+                            required
+                        ></textarea>
+                        <div class="error-message" id="messageError"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span class="submit-text">Send Message</span>
+                        <span class="submit-loading">Sending...</span>
+                    </button>
+                </form>
+                
+                <div class="success-message" id="successMessage">
+                    <h3>Message Sent Successfully!</h3>
+                    <p>Thank you for contacting Live Transcribe support. We'll get back to you within 24 hours.</p>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Live Transcribe. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Get DOM elements
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        const contactIntro = document.querySelector('.contact-intro');
+
+        // Initially hide success message
+        successMessage.style.display = 'none';
+
+        // Form validation and submission
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            clearErrors();
+            
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            let isValid = true;
+            
+            // Validate name
+            if (!name) {
+                showError('nameError', 'Name is required');
+                isValid = false;
+            } else if (name.length < 2) {
+                showError('nameError', 'Name must be at least 2 characters long');
+                isValid = false;
+            }
+            
+            // Validate email
+            if (!email) {
+                showError('emailError', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showError('emailError', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate message
+            if (!message) {
+                showError('messageError', 'Message is required');
+                isValid = false;
+            } else if (message.length < 10) {
+                showError('messageError', 'Message must be at least 10 characters long');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Show loading state
+                const submitButton = document.querySelector('.btn-submit');
+                const submitText = document.querySelector('.submit-text');
+                const submitLoading = document.querySelector('.submit-loading');
+                
+                submitButton.disabled = true;
+                submitText.style.display = 'none';
+                submitLoading.style.display = 'inline';
+                
+                // Simulate form submission (replace with actual submission logic)
+                setTimeout(() => {
+                    // Hide form and show success message
+                    contactForm.style.display = 'none';
+                    contactIntro.style.display = 'none';
+                    successMessage.style.display = 'block';
+                }, 1500);
+            }
+        });
+        
+        // Real-time validation
+        document.getElementById('name').addEventListener('blur', validateName);
+        document.getElementById('email').addEventListener('blur', validateEmail);
+        document.getElementById('message').addEventListener('blur', validateMessage);
+        
+        function validateName() {
+            const name = document.getElementById('name').value.trim();
+            if (name && name.length < 2) {
+                showError('nameError', 'Name must be at least 2 characters long');
+            } else {
+                clearError('nameError');
+            }
+        }
+        
+        function validateEmail() {
+            const email = document.getElementById('email').value.trim();
+            if (email && !isValidEmail(email)) {
+                showError('emailError', 'Please enter a valid email address');
+            } else {
+                clearError('emailError');
+            }
+        }
+        
+        function validateMessage() {
+            const message = document.getElementById('message').value.trim();
+            if (message && message.length < 10) {
+                showError('messageError', 'Message must be at least 10 characters long');
+            } else {
+                clearError('messageError');
+            }
+        }
+        
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            const inputElement = errorElement.previousElementSibling;
+            
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+            inputElement.classList.add('error');
+        }
+        
+        function clearError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            const inputElement = errorElement.previousElementSibling;
+            
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+            inputElement.classList.remove('error');
+        }
+        
+        function clearErrors() {
+            const errorElements = document.querySelectorAll('.error-message');
+            const inputElements = document.querySelectorAll('.form-input, .form-textarea');
+            
+            errorElements.forEach(el => {
+                el.textContent = '';
+                el.style.display = 'none';
+            });
+            
+            inputElements.forEach(el => {
+                el.classList.remove('error');
+            });
+        }
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+    </script>
+</body>
+</html> 

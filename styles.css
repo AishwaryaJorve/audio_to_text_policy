@@ -1,0 +1,439 @@
+:root {
+    --primary: 222.2 84% 4.9%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--background));
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.125rem;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 1rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    color: hsl(var(--primary));
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: hsl(var(--primary));
+    text-decoration: underline;
+}
+
+main {
+    flex: 1;
+    margin-bottom: 3rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transform: translateY(-2px);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: hsl(var(--card-foreground));
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.btn-primary {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+}
+
+.btn-primary:hover {
+    background-color: hsl(var(--primary) / 0.9);
+}
+
+.btn-secondary {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+}
+
+.btn-secondary:hover {
+    background-color: hsl(var(--secondary) / 0.8);
+}
+
+.legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.legal-content section {
+    margin-bottom: 2.5rem;
+}
+
+.legal-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid hsl(var(--border));
+}
+
+.legal-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.legal-content p {
+    color: hsl(var(--foreground));
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.legal-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.legal-content li {
+    color: hsl(var(--foreground));
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.legal-content li strong {
+    color: hsl(var(--foreground));
+    font-weight: 600;
+}
+
+.contact-info {
+    background: hsl(var(--muted));
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--border));
+    margin-top: 1rem;
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+}
+
+.contact-info p:last-child {
+    margin-bottom: 0;
+}
+
+footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid hsl(var(--border));
+    color: hsl(var(--muted-foreground));
+    font-size: 0.875rem;
+}
+
+/* Contact Form Styles */
+.contact-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact-intro h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    margin-bottom: 1rem;
+}
+
+.contact-intro p {
+    color: hsl(var(--muted-foreground));
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+.contact-form {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 500;
+    color: hsl(var(--foreground));
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid hsl(var(--input));
+    border-radius: var(--radius);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--background));
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: hsl(var(--muted-foreground));
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-input.error,
+.form-textarea.error {
+    border-color: hsl(var(--destructive));
+    box-shadow: 0 0 0 2px hsl(var(--destructive) / 0.2);
+}
+
+.error-message {
+    display: none;
+    color: hsl(var(--destructive));
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-submit:disabled:hover {
+    background-color: hsl(var(--primary));
+}
+
+.submit-loading {
+    display: none;
+}
+
+.success-message {
+    background: hsl(120 50% 96%);
+    border: 1px solid hsl(120 50% 80%);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    color: hsl(120 50% 20%);
+}
+
+.success-message h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: hsl(120 50% 15%);
+}
+
+.success-message p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: hsl(120 50% 25%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem 0.75rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+    
+    .legal-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .legal-content h3 {
+        font-size: 1.125rem;
+    }
+    
+    .contact-form-container {
+        max-width: 100%;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .contact-intro h2 {
+        font-size: 1.5rem;
+    }
+    
+    .contact-intro p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .card {
+        padding: 1.25rem;
+    }
+    
+    .contact-form {
+        padding: 1.25rem;
+    }
+    
+    .contact-intro {
+        margin-bottom: 2rem;
+    }
+    
+    .contact-intro h2 {
+        font-size: 1.375rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .back-link,
+    footer {
+        display: none;
+    }
+    
+    .container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+} 
